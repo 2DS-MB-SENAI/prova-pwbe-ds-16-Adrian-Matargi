@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Medicos</title>
+</head>
+<body>
+    <main>  
+            <h1>Lista de Medicos</h1>
+            <ul>
+                {% for medico in medicos %}
+                    <div>
+                        <p><strong>Medico:</strong> {{ medico.nome }}</p>
+                        <p><strong>Especialidade:</strong> {{ medico.especialidade }}</p>
+                        <p><strong>CRM:</strong> {{ medico.crm }}</p>
+                        <p><strong>email:</strong> {{ medico.email }}</p>
+                        </div>
+                    </div>
+                {% empty %}
+                    <li>Nenhum Médico cadastrado</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </main>
+</body>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Consultas</title>
+</head>
+<body>
+    <main>  
+            <h1>Lista de Consultas</h1>
+            <button><a href="{% url 'criar_consulta' %}">Criar Nova Consulta</a></button>
+            <ul>
+                {% for consulta in consultas %}
+                    <div>
+                        <div><strong>Nome do Paciente:</strong> {{ consulta.paciente }}</div>
+                        <div>
+                            <p><strong>Médico Responsável:</strong> {{ consulta.medico }}</p>
+                            <p><strong>Data e Status:</strong>  ({{ consulta.data }}) - {{ consulta.status }}</p>
+                        </div>
+                        <div>
+                            <p><a href="{% url 'detalhes_consulta' consulta.pk %}">Visualizar detalhes</a></p>
+                        </div>
+                    </div>
+                {% empty %}
+                    <li>Nenhuma consulta cadastrada.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

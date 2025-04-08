@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Consulta</title>
+</head>
+<body>
+    <h1>Criar Consulta</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="mensagem {% if message.tags %}{{ message.tags }}{% endif %}">
+                <strong>{{ message }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            <div>
+                {{ field.label_tag }}<br>
+                {{ field }}
+                {% if field.errors %}
+                    <div class="erro">
+                        <p>{{ field.errors|striptags }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit">Salvar</button>
+    </form>
+
+    <a href="{% url 'listar_consulta' %}">Voltar para a lista de Consulta</a>
+</body>
+</html>
